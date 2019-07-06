@@ -9,6 +9,7 @@ from fastai.core import ifnone
 from torch import Tensor
 from time import time
 from fastprogress.fastprogress import format_time
+from warnings import warn
 
 class TelegramNotifier(LearnerCallback):
     "A `LearnerCallback` that notifies you via telegram when an epoch is done, and its associated metrics."
@@ -36,5 +37,8 @@ class TelegramNotifier(LearnerCallback):
         str_stats = ','.join(stats)
         msg = msg + str_stats + '\n'
         
-        self.bot.send_message(chat_id=self.chat_id, text=msg)
+        try:
+            self.bot.send_message(chat_id=self.chat_id, text=msg)
+        except Exception as e:
+            warn("Could not deliver message. Error: " + str(e), RuntimeWarning)
         
