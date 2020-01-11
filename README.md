@@ -19,6 +19,6 @@ Done :).
 
 Now after each epoch you get a message with all your metrics and losses, looking something like:
 
-![something like this](http://magaimg.net/img/8dg6.png)
+![something like this](img.jpg)
 
 So now whenever an epoch finishes, you will get notified with a message like this, making sure you always have the latest updates of how your training is going. Of course, if you have more metrics then they will be included in the notificaiton message.
